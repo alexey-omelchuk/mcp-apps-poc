@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Explorador Nunsys Group</title>
+</head>
+<body>
+  <main class="main">
+    <header class="header">
+      <h1>Nunsys Group</h1>
+      <span id="status-line" class="muted">Esperando datos del host…</span>
+    </header>
+
+    <section id="kpis" class="kpis" aria-label="Cifras clave"></section>
+    <p id="kpi-source" class="muted source"></p>
+
+    <div class="toolbar">
+      <nav class="filters" aria-label="Filtro por categoría">
+        <button class="chip active" data-cat="">Todo <span class="count" data-count=""></span></button>
+        <button class="chip" data-cat="unidad">Unidades <span class="count" data-count="unidad"></span></button>
+        <button class="chip" data-cat="producto">Productos <span class="count" data-count="producto"></span></button>
+        <button class="chip" data-cat="empresa">Empresas <span class="count" data-count="empresa"></span></button>
+      </nav>
+      <input id="search" type="search" placeholder="Buscar (IA, SAP, sanidad…)" aria-label="Buscar">
+    </div>
+
+    <section id="grid" class="grid" aria-live="polite"><p class="muted">Cargando…</p></section>
+
+    <section id="detail" class="detail" hidden>
+      <div class="detail-head">
+        <div>
+          <span id="d-cat" class="pill"></span>
+          <h2 id="d-title"></h2>
+        </div>
+        <button id="d-close" class="ghost" aria-label="Cerrar">✕</button>
+      </div>
+      <p id="d-desc"></p>
+      <p id="d-tags" class="tags"></p>
+      <div class="actions">
+        <button id="d-star">☆ Marcar como interesante</button>
+        <button id="d-ask" class="secondary">Pedir a Claude que me lo explique</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/src/mcp-app.ts"></script>
+</body>
+</html>

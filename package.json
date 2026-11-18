@@ -1,0 +1,42 @@
+{
+  "name": "mcp-apps-poc",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "POC de MCP Apps: un servidor MCP que devuelve una UI HTML interactiva (explorador de Nunsys Group) dentro de Claude",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:ui": "cross-env INPUT=mcp-app.html vite build",
+    "build:server": "tsc -p tsconfig.server.json",
+    "build": "npm run typecheck && npm run build:ui && npm run build:server",
+    "serve": "node build/main.js",
+    "serve:stdio": "node build/main.js --stdio",
+    "start": "npm run build && npm run serve",
+    "dev": "concurrently \"cross-env INPUT=mcp-app.html vite build --watch\" \"tsx watch main.ts\"",
+    "test:host": "cross-env INPUT=test/host.html vite --port 5173"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/express": "2.0.0",
+    "@modelcontextprotocol/ext-apps": "^2.0.4",
+    "@modelcontextprotocol/node": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}
